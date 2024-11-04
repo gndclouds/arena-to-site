@@ -1,0 +1,45 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  height: 100vh;
+}
+
+.index {
+  background-color: var(--index-background-color);
+  padding: 20px;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+}
+
+.index ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.index li {
+  margin-bottom: 10px;
+}
+
+.index a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.index a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.note {
+  margin-bottom: 40px;
+}
+
+.note h2 {
+  margin-top: 0;
+}

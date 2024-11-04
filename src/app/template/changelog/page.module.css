@@ -1,0 +1,28 @@
+.changelog-container {
+  display: flex;
+}
+
+.timeline {
+  width: 150px;
+  background-color: var(--index-background-color);
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  border-right: 2px solid #ccc;
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline-date {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
