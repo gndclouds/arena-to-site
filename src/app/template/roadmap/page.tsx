@@ -1,9 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 
+// Define a type for the changelog items
+type ChangelogItem = {
+  id: string; // or number, depending on your data
+  title: string;
+  content: string;
+};
+
 export default function Changelog() {
-  const [changelog, setChangelog] = useState([]);
-  const [error, setError] = useState(null);
+  const [changelog, setChangelog] = useState<ChangelogItem[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchChangelog() {
@@ -12,7 +19,11 @@ export default function Changelog() {
         const data = await response.json();
         setChangelog(data.contents);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unknown error occurred");
+        }
       }
     }
 

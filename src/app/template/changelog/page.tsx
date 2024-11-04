@@ -2,9 +2,18 @@
 import { useEffect, useState } from "react";
 import { parseISO, format } from "date-fns";
 
+// Define a type for the changelog items
+type ChangelogItem = {
+  id: string;
+  date?: string; // Assuming date might be optional
+  title: string;
+  version: string;
+  content: string;
+};
+
 export default function Changelog({ channelName = "ats-template-changelog" }) {
-  const [changelog, setChangelog] = useState([]);
-  const [error, setError] = useState(null);
+  const [changelog, setChangelog] = useState<ChangelogItem[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchChangelog() {
@@ -13,7 +22,11 @@ export default function Changelog({ channelName = "ats-template-changelog" }) {
         const data = await response.json();
         setChangelog(data.contents);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unknown error occurred");
+        }
       }
     }
 
