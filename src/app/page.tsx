@@ -44,7 +44,10 @@ function Page() {
       <ul className={styles.gallery}>
         {shuffledTemplates.map((template, index) => (
           <li key={index} className={styles.card}>
-            <Link href={template.link}>
+            <Link
+              href={template.link}
+              data-umami-event={`click-${template.title}`}
+            >
               <div>
                 {template.icon}
                 <h2 className={styles.cardTitle}>{template.title}</h2>
