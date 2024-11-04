@@ -11,7 +11,8 @@ type ChangelogItem = {
   content: string;
 };
 
-export default function Changelog({ channelName = "ats-template-changelog" }) {
+export default function Changelog() {
+  const channelName = "ats-template-changelog"; // Set default value here
   const [changelog, setChangelog] = useState<ChangelogItem[]>([]);
   const [error, setError] = useState<string | null>(null);
 
